@@ -1,0 +1,7 @@
+---
+- name: Start and Enable "{{ httpd_package }}"
+  service:
+    name: "{{ httpd_package }}"
+    state: restarted
+    enabled: yes
+    

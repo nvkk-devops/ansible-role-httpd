@@ -1,0 +1,12 @@
+---
+# vars file for ansible-role-httpd
+ansible_python_interpreter: "/usr/bin/python3"
+sys_packages: [ 'curl', 'vim', 'git', 'ufw']
+httpd_package: "apache2"
+sites_available: "/etc/apache2/sites-available"
+sites_enabled: "/etc/apache2/sites-enabled"
+app_user: "venkata"
+http_host: "venkatasite.com"
+http_conf: "venkatasite.com.conf"
+http_port: "80"
+disable_default: true

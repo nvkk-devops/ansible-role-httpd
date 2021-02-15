@@ -1,0 +1,9 @@
+---
+- name: Install Latest packages
+  package: 
+    name: "{{ sys_packages }}"
+    state: latest
+- name: Install "{{ httpd_package }}"
+  package:
+    name: "{{ httpd_package }}" # httpd for 'RHEL', apache2 for 'Debian/Ubuntu'
+    state: latest

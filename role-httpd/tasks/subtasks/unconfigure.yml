@@ -1,0 +1,10 @@
+---
+- name: "Create Site Directories"
+  file:
+    dest: "{{ item }}"
+    state: absent
+  with_items:
+    - "/var/www/{{ http_host }}"
+    - "/etc/apache2/sites-available/{{ http_conf }}"
+  notify:
+    - restart_apache

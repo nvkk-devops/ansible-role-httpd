@@ -1,0 +1,28 @@
+---
+- name: Create Site Directories
+  file:
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+  with_items:
+    - "/var/www/{{ http_host }}"
+- name: Copy index test page
+  template:
+    src: "files/index.html.j2"
+    dest: "/var/www/{{ http_host }}/index.html"
+- name: Set up Apache virtualhost
+  template:
+    src: "files/apache.conf.j2"
+    dest: "{{ sites_available }}/{{ http_conf }}"
+- name: Create Sym Link
+  file:
+    src: "{{ sites_available }}/{{ http_conf }}"
+    dest: "{{ sites_enabled }}/{{ http_conf }}"
+    owner: root
+    group: root
+    mode: 0777
+    state: link
+  notify:
+    - restart_apache

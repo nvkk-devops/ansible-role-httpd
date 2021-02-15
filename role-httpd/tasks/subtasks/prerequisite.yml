@@ -1,0 +1,6 @@
+---
+- name: "Ensure ~/asuser exists"
+  template:
+    src: 'asuser.j2'
+    dest: '/home/vagrant/asuser'
+    mode: 'u=rwx,g=rx,o=rx'
